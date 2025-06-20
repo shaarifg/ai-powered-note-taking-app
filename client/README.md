@@ -1,12 +1,81 @@
-# React + Vite
+# 📘 Client – NoteVerse Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Modern AI-powered note editor built with **React**, **Vite**, and **TailwindCSS**, optimized for speed and UX.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠 Tech Stack
 
-## Expanding the ESLint configuration
+| Purpose            | Library / Tool                 |
+| ------------------ | ------------------------------ |
+| Framework          | React 18 (with Hooks)          |
+| Build Tool         | Vite                           |
+| Styling            | TailwindCSS + Custom Theme     |
+| Icons              | FontAwesome                    |
+| Routing            | React Router DOM               |
+| State Management   | React Context API              |
+| Editor             | TipTap Rich Text Editor        |
+| Markdown Rendering | ReactMarkdown + GFM Plugins    |
+| Drag & Drop        | React Flow (for canvas layout) |
+| HTTP Requests      | Native Fetch API               |
+| AI Enhancements    | OpenRouter (DeepSeek R1)       |
+| Authentication     | AuthContext + JWT              |
+| API Integration    | `/api/*` proxied to backend    |
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🚀 Local Setup
+
+```bash
+cd client
+npm install
+npm run dev
+```
+
+> Make sure `.env` is available at the root:
+
+```env
+VITE_API_BASE_URL=api_here
+```
+
+---
+
+## ✅ Features
+
+- 🌐 **Authentication**
+
+  - JWT stored in memory (no localStorage)
+  - AuthContext manages login/session
+
+- 📝 **Note Creation**
+
+  - Title & Rich Text Content (TipTap)
+  - AI Enhancements: grammar fix, expand, summarize
+  - AI-generated title (not duplicated in content)
+
+- 🧠 **AI Enhancer Panel**
+
+  - Prompts: fix grammar, expand, summarize
+  - Accept/Replace content with styled response
+  - Spinner + disable states during AI call
+
+- 📄 **Drag-and-Drop Notes Board**
+
+  - Canvas with draggable note cards
+  - Real-time position sync to backend
+
+- 💅 **UX Enhancements**
+
+  - Skeleton loaders
+  - Responsive layout
+  - Smooth transitions
+
+---
+
+## 🧪 Dev Commands
+
+```bash
+npm dev       # Start dev server
+npm build     # Production build
+npm preview   # Preview build
+```
