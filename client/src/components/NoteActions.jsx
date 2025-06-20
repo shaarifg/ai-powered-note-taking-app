@@ -31,7 +31,7 @@ export default function NoteActions({ note }) {
       <button
         onClick={() => navigate(`/notes/${note._id}`)}
         title="Edit"
-        className="text-green-600 hover:text-green-800"
+        className="text-green-600 hover:text-green-800 cursor-pointer"
       >
         <i className="fa-solid fa-pen"></i>
       </button>
@@ -39,7 +39,7 @@ export default function NoteActions({ note }) {
       <button
         onClick={handleDelete}
         title="Delete"
-        className="text-red-600 hover:text-red-800"
+        className="text-red-600 hover:text-red-800 cursor-pointer"
       >
         <i className="fa-solid fa-trash"></i>
       </button>

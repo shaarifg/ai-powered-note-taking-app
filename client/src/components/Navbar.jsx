@@ -21,12 +21,9 @@ export default function Navbar() {
 
       {/* Right Side Actions */}
       <div className="flex items-center gap-6">
-        <Link
-          to="/create"
-          className="group flex items-center gap-2 px-4 py-2 rounded-full bg-primary text-white text-sm font-medium hover:shadow-md transition"
-        >
-          <span className="w-5 h-5 rounded-full flex items-center justify-center bg-white text-black group-hover:rotate-90 transition-transform duration-300">
-            +
+        <Link to="/create" title="New Note">
+          <span className="w-7 h-7 flex items-center justify-center rounded-full border border-primary group-hover:bg-white hover:bg-primary hover:text-white transition-all duration-300">
+            <i className="fas fa-plus text-xs" />
           </span>
         </Link>
 
@@ -40,7 +37,7 @@ export default function Navbar() {
             </Link>
             <Link
               to="/signup"
-              className="text-sm text-white bg-primary px-4 py-2  hover:bg-gray-900 transition"
+              className="text-sm text-white bg-primary px-4 py-2  hover:bg-primary/80 transition"
             >
               Sign Up
             </Link>

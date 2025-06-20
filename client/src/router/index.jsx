@@ -9,6 +9,9 @@ import Home from "../pages/Home";
 import NoAuthGuard from "../layouts/NoAuthGuard";
 import NotFound from "../pages/NotFound";
 import AuthGuard from "../layouts/AuthGuard";
+import { NotesProvider } from "../contexts/NotesContext";
+
+const withNotesProvider = (element) => <NotesProvider>{element}</NotesProvider>;
 
 const router = createBrowserRouter([
   {
@@ -17,7 +20,7 @@ const router = createBrowserRouter([
       { path: "/", element: <Home /> },
       {
         path: "/notes",
-        element: (
+        element: withNotesProvider(
           <NoAuthGuard>
             <NotesBoardPage />
           </NoAuthGuard>
@@ -25,7 +28,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/notes/:noteId",
-        element: (
+        element: withNotesProvider(
           <NoAuthGuard>
             <CreateNotePage />
           </NoAuthGuard>
@@ -33,7 +36,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/create",
-        element: (
+        element: withNotesProvider(
           <NoAuthGuard>
             <CreateNotePage />
           </NoAuthGuard>

@@ -69,7 +69,7 @@ export default function NotesBoardPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-50 px-4 py-8">
+    <div className="min-h-screen bg-gray-50 p-12">
       <DndContext
         sensors={sensors}
         collisionDetection={closestCenter}
@@ -80,6 +80,12 @@ export default function NotesBoardPage() {
           items={notes.map((note) => note._id)}
           strategy={rectSortingStrategy}
         >
+          {!loading && notes.length > 0 && (
+            <h2 className="text-xl font-semibold text-gray-800 mb-6 ">
+              All Your Notes
+            </h2>
+          )}
+
           <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
             {loading ? (
               Array.from({ length: 6 }).map((_, idx) => (

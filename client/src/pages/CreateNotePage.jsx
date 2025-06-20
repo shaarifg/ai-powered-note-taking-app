@@ -27,10 +27,8 @@ export default function CreateNotePage() {
   const [title, setTitle] = useState("");
   const [error, setError] = useState("");
   const [prompt, setPrompt] = useState("");
-  const [aiText, setAiText] = useState("");
-  const [aiSummary, setAiSummary] = useState("");
+  const [aiData, setAiData] = useState(null);
   const [aiLoading, setAiLoading] = useState(false);
-  const [isAiCompleted, setIsAiCompleted] = useState(false);
   const [showSuggestions, setShowSuggestions] = useState(false);
 
   const editor = useEditor({
@@ -56,15 +54,13 @@ export default function CreateNotePage() {
 
   const isEditMode = !!noteId;
 
-  // Reset when route changes to /create
+  // Reset state when switching to /create
   useEffect(() => {
     if (!noteId) {
       setTitle("");
       editor?.commands.setContent("");
       setPrompt("");
-      setAiText("");
-      setAiSummary("");
-      setIsAiCompleted(false);
+      setAiData(null);
     }
   }, [noteId, location.pathname]);
 
@@ -127,21 +123,16 @@ export default function CreateNotePage() {
   const handleAIEnhance = async () => {
     if (!noteId || !prompt.trim()) return;
 
-    setAiText("");
-    setAiSummary("");
-    setIsAiCompleted(false);
     setAiLoading(true);
-
+    setAiData(null);
     try {
       const res = await callApi({
         method: "POST",
         endpoint: `/notes/${noteId}/ai-enhance`,
-        data: { prompt },
+        data: { prompt, title },
       });
 
-      setAiText(res.note.content);
-      setAiSummary(res.note.summary || "");
-      setIsAiCompleted(true);
+      setAiData(res.note); // contains updated title + content
     } catch {
       setError("AI failed to enhance the note.");
     } finally {
@@ -150,9 +141,9 @@ export default function CreateNotePage() {
   };
 
   const handleAcceptAi = async () => {
-    if (!noteId || !aiText.trim()) return;
+    if (!noteId || !aiData?.content?.trim()) return;
 
-    let htmlContent = marked.parse(aiText);
+    let htmlContent = marked.parse(aiData.content);
     htmlContent = htmlContent.replace(
       /<li>\s*\[x\]\s*(.*?)<\/li>/gi,
       `<li data-type="taskItem" data-checked="true"><span class="task-content">$1</span></li>`
@@ -161,7 +152,6 @@ export default function CreateNotePage() {
       /<li>\s*\[\s\]\s*(.*?)<\/li>/gi,
       `<li data-type="taskItem" data-checked="false"><span class="task-content">$1</span></li>`
     );
-
     if (htmlContent.includes('data-type="taskItem"')) {
       htmlContent = htmlContent.replace(
         /<ul>(.*?)<\/ul>/s,
@@ -169,15 +159,14 @@ export default function CreateNotePage() {
       );
     }
 
+    setTitle(aiData.title || title); // update title
     editor.commands.setContent(htmlContent, false);
-    setAiText("");
-    setAiSummary("");
-    setIsAiCompleted(false);
+    setAiData(null);
 
     await callApi({
       method: "PUT",
       endpoint: `/notes/${noteId}`,
-      data: { title, content: htmlContent },
+      data: { title: aiData.title || title, content: htmlContent },
     });
   };
 
@@ -211,8 +200,8 @@ export default function CreateNotePage() {
 
       {error && <p className="text-red-500 mb-4 text-sm">{error}</p>}
 
-      {aiText && (
-        <div className="mt-8 border border-dashed border-purple-300 p-4 rounded-sm bg-purple-50">
+      {aiData?.content && (
+        <div className="mt-8 border border-dashed border-purple-300 p-4 bg-purple-50">
           <h3 className="text-sm font-semibold text-purple-700 mb-2">
             AI Suggested Content
           </h3>
@@ -232,18 +221,9 @@ export default function CreateNotePage() {
                 ),
               }}
             >
-              {aiText}
+              {aiData.content}
             </ReactMarkdown>
           </div>
-
-          {aiSummary && (
-            <div className="mt-6 bg-yellow-50 border border-yellow-300 p-3 rounded">
-              <h4 className="text-xs font-semibold text-yellow-800 mb-2 uppercase tracking-wide">
-                AI Summary
-              </h4>
-              <p className="text-sm text-yellow-900">{aiSummary}</p>
-            </div>
-          )}
 
           <div className="mt-4 flex justify-end">
             <button
@@ -282,7 +262,7 @@ export default function CreateNotePage() {
                 onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
                 disabled={aiLoading}
                 placeholder="Ask AI to enhance your note..."
-                className="w-full px-4 py-2 border border-gray-300 rounded-sm text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-4 py-2 border border-gray-300 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
               />
               <button
                 onClick={handleAIEnhance}

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import BrandLogo from "../components/BrandLogo";
+import AuthLeftPanel from "../components/AuthLeftPanel";
 
 export default function SignIn() {
   const { login } = useAuth();
@@ -31,8 +32,10 @@ export default function SignIn() {
 
   return (
     <div className="w-full h-screen flex">
-      {/* Left side image - hidden on small screens */}
-      <div className="hidden sm:block flex-1 bg-[url('/images/pattern.jpg')] bg-cover bg-center" />
+      <AuthLeftPanel
+        heading="Welcome back to NoteVerse"
+        text="Your notes, your way — now with superpowers. Sign in to create, drag, enhance, and own your ideas with the help of AI."
+      />
 
       {/* Right side form */}
       <div className="w-full sm:w-[420px] bg-white flex flex-col justify-center items-center px-6 sm:px-12">

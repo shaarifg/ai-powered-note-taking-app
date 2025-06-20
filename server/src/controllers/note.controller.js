@@ -56,7 +56,8 @@ export const enhanceNote = asyncHandler(async (req, res) => {
   const note = await NoteService.getNoteById(noteId, req.userId);
 
   const generated = await AIService.processContent({
-    content: note.content || "",
+    content: note.content,
+    title: note.title,
     prompt,
   });
 

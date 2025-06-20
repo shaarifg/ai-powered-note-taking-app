@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import BrandLogo from "../components/BrandLogo";
+import AuthLeftPanel from "../components/AuthLeftPanel";
 
 export default function SignUp() {
   const navigate = useNavigate();
@@ -53,9 +54,10 @@ export default function SignUp() {
 
   return (
     <div className="w-full h-screen flex">
-      {/* Left side image - hidden on small screens */}
-      <div className="hidden sm:block flex-1 bg-[url('/images/pattern.jpg')] bg-cover bg-center" />
-
+      <AuthLeftPanel
+        heading="Your notes, organized by AI"
+        text="Sign up to create, enhance, and manage notes with powerful AI features"
+      />
       {/* Right side form */}
       <div className="w-full sm:w-[420px] bg-white flex flex-col justify-center items-center px-6 sm:px-12">
         <div className="w-full max-w-sm">

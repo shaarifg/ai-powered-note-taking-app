@@ -2,6 +2,27 @@ import React from "react";
 import { Link } from "react-router-dom";
 import heroImg from "../assets/hero.png";
 
+const steps = [
+  {
+    title: "Create Effortlessly",
+    desc: "Start typing or import your ideas — your note is just a click away.",
+    icon: "fa-solid fa-pen-nib",
+    animate: "fa-bounce",
+  },
+  {
+    title: "Enhance With AI",
+    desc: "Use prompts to rewrite, summarize, or polish your notes instantly.",
+    icon: "fa-solid fa-wand-magic-sparkles",
+    animate: "fa-beat",
+  },
+  {
+    title: "Drag. Drop. Done.",
+    desc: "Organize your canvas visually. Prioritize what matters.",
+    icon: "fa-solid fa-arrows-up-down-left-right",
+    animate: "fa-fade",
+  },
+];
+
 const Home = () => {
   return (
     <div className="bg-white text-gray-900">
@@ -31,31 +52,24 @@ const Home = () => {
         </div>
       </section>
 
-      {/* How It Works */}
-      <section className="bg-gray-50 py-20">
+      <section className="relative bg-gray-50 py-20 overflow-hidden">
         <div className="max-w-5xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-12">How It Works</h2>
-          <div className="grid gap-12 md:grid-cols-3">
-            {[
-              {
-                title: "Create Effortlessly",
-                desc: "Start typing or import your ideas — your note is just a click away.",
-                icon: "📝",
-              },
-              {
-                title: "Enhance With AI",
-                desc: "Use prompts to rewrite, summarize, or polish your notes instantly.",
-                icon: "⚡",
-              },
-              {
-                title: "Drag. Drop. Done.",
-                desc: "Organize your canvas visually. Prioritize what matters.",
-                icon: "📌",
-              },
-            ].map(({ title, desc, icon }, idx) => (
-              <div key={idx} className="bg-white  p-6  border border-gray-200">
-                <div className="text-4xl mb-4">{icon}</div>
-                <h3 className="text-xl font-semibold mb-2">{title}</h3>
+          <h2 className="text-3xl font-bold mb-12 text-gray-900">
+            How It Works
+          </h2>
+
+          <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-3">
+            {steps.map(({ title, desc, icon, animate }, idx) => (
+              <div
+                key={idx}
+                className="bg-white border border-gray-200 p-6 hover:shadow-sm transition"
+              >
+                <div className="text-4xl text-primary mb-4">
+                  <i className={`${icon} ${animate}`}></i>
+                </div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  {title}
+                </h3>
                 <p className="text-sm text-gray-600">{desc}</p>
               </div>
             ))}
