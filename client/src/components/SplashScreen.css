@@ -1,0 +1,64 @@
+/* src/components/SplashScreen.css */
+.spinner {
+  position: relative;
+  width: 22.4px;
+  height: 22.4px;
+}
+
+.spinner::before,
+.spinner::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  display: block;
+  animation: spinner-b4c8mmmd 0.5s backwards,
+    spinner-49opz7md 1.25s 0.5s infinite ease;
+  border: 5.6px solid #7e00a5;
+  border-radius: 50%;
+  box-shadow: 0 -33.6px 0 -5.6px #7e00a5;
+  position: absolute;
+}
+
+.spinner::after {
+  animation-delay: 0s, 1.25s;
+}
+
+@keyframes spinner-b4c8mmmd {
+  from {
+    box-shadow: 0 0 0 -5.6px #7e00a5;
+  }
+}
+
+@keyframes spinner-49opz7md {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Optional: Add animations for the image and text if not using a utility library like Tailwind CSS for them */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade {
+  animation: fade 1s ease-in-out forwards;
+}
