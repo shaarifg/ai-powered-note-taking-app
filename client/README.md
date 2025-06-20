@@ -1,4 +1,4 @@
-# 📘 Client – NoteVerse Frontend
+# NoteVerse Frontend
 
 Modern AI-powered note editor built with **React**, **Vite**, and **TailwindCSS**, optimized for speed and UX.
 
@@ -40,39 +40,39 @@ VITE_API_BASE_URL=api_here
 
 ---
 
-## ✅ Features
+## Features
 
-- 🌐 **Authentication**
+- **Authentication**
 
-  - JWT stored in memory (no localStorage)
-  - AuthContext manages login/session
+- JWT stored in memory (no localStorage)
+- AuthContext manages login/session
 
-- 📝 **Note Creation**
+- **Note Creation**
 
-  - Title & Rich Text Content (TipTap)
-  - AI Enhancements: grammar fix, expand, summarize
-  - AI-generated title (not duplicated in content)
+- Title & Rich Text Content (TipTap)
+- AI Enhancements: grammar fix, expand, summarize
+- AI-generated title (not duplicated in content)
 
-- 🧠 **AI Enhancer Panel**
+- **AI Enhancer Panel**
 
-  - Prompts: fix grammar, expand, summarize
-  - Accept/Replace content with styled response
-  - Spinner + disable states during AI call
+- Prompts: fix grammar, expand, summarize
+- Accept/Replace content with styled response
+- Spinner + disable states during AI call
 
-- 📄 **Drag-and-Drop Notes Board**
+- **Drag-and-Drop Notes Board**
 
-  - Canvas with draggable note cards
-  - Real-time position sync to backend
+- Canvas with draggable note cards
+- Real-time position sync to backend
 
-- 💅 **UX Enhancements**
+- **UX Enhancements**
 
-  - Skeleton loaders
-  - Responsive layout
-  - Smooth transitions
+- Skeleton loaders
+- Responsive layout
+- Smooth transitions
 
 ---
 
-## 🧪 Dev Commands
+## Dev Commands
 
 ```bash
 npm dev       # Start dev server

@@ -126,8 +126,3 @@ npm start
 | Auth Routes & Token Middleware      | ✅     |
 | Note CRUD with AI Enhancement       | ✅     |
 | MongoDB Schema with Position Fields | ✅     |
-| Rate Limit / Validation (coming)    | ⏳     |
-
----
-
-Let me know if you'd like this split into `client/README.md` and `server/README.md` too — I can auto-generate that for you.

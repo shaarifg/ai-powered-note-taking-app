@@ -1,10 +1,10 @@
-# 📙 Server – NoteVerse Backend
+# Server – NoteVerse Backend
 
 Express.js backend powering NoteVerse with AI processing, MongoDB, and secure Auth.
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
 | Purpose            | Library / Tool                   |
 | ------------------ | -------------------------------- |
@@ -21,7 +21,7 @@ Express.js backend powering NoteVerse with AI processing, MongoDB, and secure Au
 
 ---
 
-## 🚀 Local Setup
+## Local Setup
 
 ```bash
 cd server
@@ -41,7 +41,7 @@ JWT_SECRET=your_jwt_secret_here
 
 ---
 
-## 📁 Folder Structure
+## Folder Structure
 
 ```
 server/
@@ -57,7 +57,7 @@ server/
 
 ---
 
-## 🔐 Auth Flow
+## Auth Flow
 
 - User signs up / logs in → JWT issued
 - JWT is validated via middleware for protected routes
@@ -65,7 +65,7 @@ server/
 
 ---
 
-## 🧠 AI Enhancement
+## AI Enhancement
 
 - Uses OpenRouter API
 - Validates and pre-checks bad/gibberish input
@@ -74,7 +74,7 @@ server/
 
 ---
 
-## ✅ Features
+## Features
 
 | Feature              | Description                         |
 | -------------------- | ----------------------------------- |
@@ -86,7 +86,7 @@ server/
 
 ---
 
-## 🧪 Dev Commands
+## Dev Commands
 
 ```bash
 npm start     # Start dev server with nodemon
