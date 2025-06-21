@@ -6,22 +6,7 @@ import appRoutes from "./routes/index.js";
 
 const app = express();
 
-// Security Middleware
-// app.use(helmet()); // Security headers
 app.use(cors("*")); // CORS configuration
-
-// Rate limiting
-// const limiter = rateLimit({
-//   windowMs: appConfig.api.rateLimit.windowMs,
-//   max: appConfig.api.rateLimit.max,
-//   message: {
-//     status: 429,
-//     message: "Too many requests, please try again later.",
-//   },
-// });
-
-// Apply rate limiter to all routes
-// app.use(limiter);
 
 // Body Parser Middleware
 app.use(express.json({ limit: "10kb" }));

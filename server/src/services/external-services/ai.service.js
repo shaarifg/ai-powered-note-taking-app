@@ -8,7 +8,7 @@ export default class AIService {
     if (!content || !prompt)
       throw new AppError("Missing content or prompt", 400);
 
-    // 🧠 Reject gibberish/fake-looking content
+    // Reject gibberish/fake-looking content
     if (/^[a-z]{10,}$/i.test(content.trim()) || content.length < 20) {
       throw new AppError(
         "Content looks too random or short. Please provide meaningful input.",

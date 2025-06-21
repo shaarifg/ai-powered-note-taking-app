@@ -239,7 +239,7 @@ export default function CreateNotePage() {
               disabled={aiLoading}
               className="px-4 py-2 bg-green-600 text-white text-sm hover:bg-green-700 transition"
             >
-              ✅ Accept AI Response
+              Accept AI Response
             </button>
           </div>
         </div>

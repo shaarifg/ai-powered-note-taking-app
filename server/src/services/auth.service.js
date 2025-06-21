@@ -6,7 +6,6 @@ import SessionService from "./session.service.js";
 
 export default class AuthService {
   static async signup({ fullName, email, password }, deviceDetails) {
-    // separate them into user service
     const existing = await User.findOne({ email });
     if (existing) throw new AppError("Email already registered", 400);
 
@@ -15,7 +14,6 @@ export default class AuthService {
 
     const token = generateToken(user);
 
-    // Create session for the device
     await SessionService.createSession(user._id, token, deviceDetails);
 
     return {

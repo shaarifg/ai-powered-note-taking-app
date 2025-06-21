@@ -20,7 +20,7 @@ A modern full-stack application with **Vite + React + TailwindCSS** on the front
 
 ### 🖥️ Local Development Setup
 
-#### ✅ Prerequisites
+#### Prerequisites
 
 - **Node.js** v20.x+
 - **MongoDB** (local or Atlas cluster)
@@ -105,17 +105,17 @@ npm start
 
 ---
 
-## ✅ Frontend Feature Checklist (`client/README.md`)
+## Frontend Feature Checklist (`client/README.md`)
 
 | Feature                         | Status |
 | ------------------------------- | ------ |
-| Authentication (JWT + Context)  | ✅     |
-| Rich Text Editor (TipTap)       | ✅     |
-| AI Enhancements                 | ✅     |
-| Drag-and-Drop Notes Canvas      | ✅     |
-| Skeleton Loaders                | ✅     |
-| Responsive UI (TailwindCSS)     | ✅     |
-| Reusable Component Architecture | ✅     |
+| Authentication (JWT + Context)  |        |
+| Rich Text Editor (TipTap)       |        |
+| AI Enhancements                 |        |
+| Drag-and-Drop Notes Canvas      |        |
+| Skeleton Loaders                |        |
+| Responsive UI (TailwindCSS)     |        |
+| Reusable Component Architecture |        |
 
 ---
 
@@ -123,6 +123,6 @@ npm start
 
 | Feature                             | Status |
 | ----------------------------------- | ------ |
-| Auth Routes & Token Middleware      | ✅     |
-| Note CRUD with AI Enhancement       | ✅     |
-| MongoDB Schema with Position Fields | ✅     |
+| Auth Routes & Token Middleware      |        |
+| Note CRUD with AI Enhancement       |        |
+| MongoDB Schema with Position Fields |        |

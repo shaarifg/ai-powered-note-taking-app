@@ -40,7 +40,7 @@ export const AuthProvider = ({ children }) => {
       auth: false,
     });
 
-    localStorage.setItem("token", res.token); // ✅ store temporarily
+    localStorage.setItem("token", res.token);
     const me = await callApi({ method: "GET", endpoint: "/users/me" });
     setUser(me.data);
   };
