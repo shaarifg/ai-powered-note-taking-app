@@ -168,6 +168,14 @@ export default function CreateNotePage() {
       endpoint: `/notes/${noteId}`,
       data: { title: aiData.title || title, content: htmlContent },
     });
+    dispatch({
+      type: "UPDATE_NOTE",
+      payload: {
+        _id: noteId,
+        title: aiData.title || title,
+        content: htmlContent,
+      },
+    });
   };
 
   const prebuiltPrompts = [

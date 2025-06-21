@@ -16,23 +16,21 @@ export default class AIService {
       );
     }
 
-    const wantsSummary = /summary|summarize|tl;dr/i.test(prompt);
-    const task = wantsSummary
-      ? `You are a brutal markdown note editor. Improve the note with rich formatting and provide a short summary at the end as '## Summary'.`
-      : `You are a brutal markdown note editor. Improve the note using clean markdown. Never explain anything how you did.`;
-
-    const markdownTips = `
-- Never say 'here is' or any explanation.
-- Fix grammar, structure, typos.
-- Use # Headings, **bold**, _italic_, and - [ ] checkboxes where suitable.
-- Summary must be at the end, as '## Summary',  if asked .
-- No prefix like 'markdown:' or 'note:'.
+    const task = `
+You are a brutal markdown note editor.
+Do only what the prompt asks. Do not add new content unless it’s explicitly requested.
+Fix all grammar, structure, and clarity issues — even if not asked.
+Use rich formatting: headings (#), **bold**, _italic_, bullet points, and - [ ] task lists when natural.
+Use emojis and icons where they improve readability or match tone 😊⚡📌✅.
+Never explain your changes, and never prefix your response with labels like "markdown", "note", or "here is".
+Always generate a clean, meaningful title as the first line using '# Title'.
+Do NOT repeat the title again in the content body.
 `.trim();
 
     const messages = [
       {
         role: "user",
-        content: `${task}\n\nPlease generate a proper title (as '# Title') based on the content. Do not repeat it inside the content body again.\n\nCONTENT:\n${content}\n\n${markdownTips}`,
+        content: `${task}\n\nPROMPT: ${prompt.trim()}\n\nCONTENT:\n${content.trim()}`,
       },
     ];
 
@@ -57,12 +55,11 @@ export default class AIService {
   }
 
   static parseAIOutput(text) {
-    // Extract title from first H1
+    // Extract and remove the first title line (# ...)
     const titleMatch = text.match(/^#\s+(.+)$/m);
     const improvedTitle =
       titleMatch?.[1]?.trim().slice(0, 100) || "Untitled Note";
 
-    // Remove first # title line from content
     const contentWithoutTitle = text.replace(/^#\s+.+\n+/m, "").trim();
 
     return {
