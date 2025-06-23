@@ -13,14 +13,14 @@ const startServer = async () => {
     console.log(`📦 Database synchronized in ${ENV} mode`);
 
     // Start server
-    app.listen(PORT, () => {
-      console.log(`
-    => Server running in ${ENV} mode
-    => API listening on port ${PORT}
-    => API prefix: ${appConfig.api.prefix}
-    => API BASE_URL: http://localhost:8181${appConfig.api.prefix}
-      `);
-    });
+    // app.listen(PORT, () => {
+    //   console.log(`
+    // => Server running in ${ENV} mode
+    // => API listening on port ${PORT}
+    // => API prefix: ${appConfig.api.prefix}
+    // => API BASE_URL: http://localhost:8181${appConfig.api.prefix}
+    //   `);
+    // });
   } catch (error) {
     console.error("❌ Error starting server:", error);
     process.exit(1);
