@@ -4,6 +4,25 @@ A modern full-stack application with **Vite + React + TailwindCSS** on the front
 
 ---
 
+---
+
+## 🚀 Running Locally (main branch)
+
+```
+# 1. Start frontend
+cd client
+npm install
+npm run dev
+
+# 2. Start backend
+cd ../server
+npm install
+npm run start:dev
+
+```
+
+---
+
 ### 🔧 Tech Stack
 
 | Layer      | Stack                                         |
@@ -33,15 +52,19 @@ A modern full-stack application with **Vite + React + TailwindCSS** on the front
 - Root `.env` file with the following variables:
 
 ```
+
 # Client-side
+
 VITE_OPENROUTER_API_KEY=...
 
 # Server-side
+
 PORT=8000
 MONGO_URI=mongodb://localhost:27017/noteverse
 OPENROUTER_API=https://openrouter.ai/api/v1/chat/completions
 AI_MODEL=deepseek/deepseek-r1:free
 JWT_SECRET=your_jwt_secret
+
 ```
 
 ---
@@ -49,28 +72,30 @@ JWT_SECRET=your_jwt_secret
 ### 📁 Folder Structure
 
 ```
+
 noteverse/
 │
-├── client/         # Frontend (Vite + React)
-│   ├── public/
-│   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   ├── context/
-│   │   ├── api/
-│   │   ├── utils/
-│   │   └── App.jsx
-│   └── index.html
+├── client/ # Frontend (Vite + React)
+│ ├── public/
+│ ├── src/
+│ │ ├── components/
+│ │ ├── pages/
+│ │ ├── context/
+│ │ ├── api/
+│ │ ├── utils/
+│ │ └── App.jsx
+│ └── index.html
 │
 ├── server/ # Backend (Express.js)
-│   ├── src/
-│       ├──controllers/
-│       ├── routes/
-│       ├── models/
-│       ├── services/
-│       └── app.js
+│ ├── src/
+│ ├── ├──controllers/
+│ ├── ├── routes/
+│ ├── models/
+│ ├── services/
+│ └── app.js
 └── README.md
 └── .gitignore
+
 ```
 
 ---
@@ -102,27 +127,3 @@ npm start
 
 - AI response is shown inline and accepted with a single click.
 - Notes title is auto-generated based on content (not duplicated inside the content).
-
----
-
-## Frontend Feature Checklist (`client/README.md`)
-
-| Feature                         | Status |
-| ------------------------------- | ------ |
-| Authentication (JWT + Context)  |        |
-| Rich Text Editor (TipTap)       |        |
-| AI Enhancements                 |        |
-| Drag-and-Drop Notes Canvas      |        |
-| Skeleton Loaders                |        |
-| Responsive UI (TailwindCSS)     |        |
-| Reusable Component Architecture |        |
-
----
-
-## 🛠 Backend Feature Checklist (`server/README.md`)
-
-| Feature                             | Status |
-| ----------------------------------- | ------ |
-| Auth Routes & Token Middleware      |        |
-| Note CRUD with AI Enhancement       |        |
-| MongoDB Schema with Position Fields |        |

@@ -75,7 +75,6 @@ VITE_API_BASE_URL=api_here
 ## Dev Commands
 
 ```bash
-npm dev       # Start dev server
+npm run dev       # Start dev server
 npm build     # Production build
-npm preview   # Preview build
 ```

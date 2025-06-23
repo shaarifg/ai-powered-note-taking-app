@@ -1,6 +1,6 @@
 # Server – NoteVerse Backend
 
-Express.js backend powering NoteVerse with AI processing, MongoDB, and secure Auth.
+Express.js backend powering NoteVerse with AI processing, MongoDB, and secure JWT Auth.
 
 ---
 
@@ -12,7 +12,7 @@ Express.js backend powering NoteVerse with AI processing, MongoDB, and secure Au
 | Language           | Node.js (v20+)                   |
 | Database           | MongoDB + Mongoose               |
 | Authentication     | JWT                              |
-| Middleware         | CORS, Helmet, Morgan             |
+| Middleware         | CORS                             |
 | AI Integration     | OpenRouter API (DeepSeek R1)     |
 | Body Parsing       | express.json, express.urlencoded |
 | Error Handling     | Custom AppError & Middleware     |
@@ -32,11 +32,13 @@ npm start
 > Make sure `.env` is available at the root:
 
 ```env
-PORT=8000
 MONGO_URI=mongodb://localhost:27017/noteverse
 OPENROUTER_API=https://openrouter.ai/api/v1/chat/completions
 AI_MODEL=deepseek/deepseek-r1:free
 JWT_SECRET=your_jwt_secret_here
+PORT=8181
+NODE_ENV=development
+API_PREFIX=/api
 ```
 
 ---
@@ -44,22 +46,26 @@ JWT_SECRET=your_jwt_secret_here
 ## Folder Structure
 
 ```
-server/
-├── controllers/         # Request handlers
-├── routes/              # API route files
-├── models/              # Mongoose schemas
-├── services/            # AI service, auth utils
-├── middlewares/         # Error, auth, validation
-├── utils/               # AppError, JWT helpers
-├── index.js             # App entry point
-└── .env                 # Environment variables
+project-root/
+├── server/                  # All backend logic lives here
+│   ├── controllers/         # Request handlers (e.g., noteController.js)
+│   ├── routes/              # Express routers (e.g., noteRoutes.js)
+│   ├── models/              # Mongoose schemas (e.g., noteModel.js)
+│   ├── services/            # Business logic, AI service, etc.
+│   ├── middlewares/         # Error handling, auth guards, validators
+│   ├── utils/               # AppError, JWT utils, constants
+│   ├── app.js               # Express app config (NO `listen` here)                         ├──  .env                    # Environment variables
+├── server.js                # Vercel entry point (NO `listen` here either)
+├── vercel.json              # Vercel deployment config
+├── package.json             # Dependencies and scripts
+└── README.md
 ```
 
 ---
 
 ## Auth Flow
 
-- User signs up / logs in → JWT issued
+- User signs up / sing in → JWT issued
 - JWT is validated via middleware for protected routes
 - `AuthContext` on frontend handles session
 
@@ -89,5 +95,5 @@ server/
 ## Dev Commands
 
 ```bash
-npm start     # Start dev server with nodemon
+npm run start:dev    # Start dev server with nodemon
 ```
