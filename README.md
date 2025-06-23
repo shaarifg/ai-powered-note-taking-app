@@ -4,8 +4,6 @@ A modern full-stack application with **Vite + React + TailwindCSS** on the front
 
 ---
 
----
-
 ## 🚀 Running Locally (main branch)
 
 ```
@@ -96,23 +94,6 @@ noteverse/
 └── README.md
 └── .gitignore
 
-```
-
----
-
-### 🚀 Running Locally
-
-```bash
-# In root directory -go to respective directory
-
-
-# Start frontend
-cd client
-npm run dev
-
-# Start backend
-cd ../server
-npm start
 ```
 
 ---
