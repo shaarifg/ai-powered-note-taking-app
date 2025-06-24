@@ -132,9 +132,9 @@ export default function CreateNotePage() {
         data: { prompt, title },
       });
 
-      setAiData(res.note); // contains updated title + content
-    } catch {
-      setError("AI failed to enhance the note.");
+      setAiData(res.note);
+    } catch (e) {
+      setError(e.response.data.message || "AI failed to enhance the note.");
     } finally {
       setAiLoading(false);
     }

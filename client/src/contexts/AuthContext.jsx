@@ -41,8 +41,7 @@ export const AuthProvider = ({ children }) => {
     });
 
     localStorage.setItem("token", res.token);
-    const me = await callApi({ method: "GET", endpoint: "/users/me" });
-    setUser(me.data);
+    setUser(res.data);
   };
 
   const signup = async (data) => {
@@ -54,8 +53,7 @@ export const AuthProvider = ({ children }) => {
     });
 
     localStorage.setItem("token", res.token);
-    const me = await callApi({ method: "GET", endpoint: "/users/me" });
-    setUser(me.data);
+    setUser(res.data);
   };
 
   const logout = async () => {
